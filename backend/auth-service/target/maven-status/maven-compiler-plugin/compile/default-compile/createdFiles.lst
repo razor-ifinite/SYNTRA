@@ -1,0 +1,11 @@
+com\syntra\auth\dto\LoginRequest.class
+com\syntra\auth\dto\RegisterRequest.class
+com\syntra\auth\security\SecurityConfig.class
+com\syntra\auth\dto\AuthResponse.class
+com\syntra\auth\repository\UserRepository.class
+com\syntra\auth\security\JwtAuthenticationFilter.class
+com\syntra\auth\AuthServiceApplication.class
+com\syntra\auth\model\User.class
+com\syntra\auth\security\JwtTokenProvider.class
+com\syntra\auth\controller\AuthController.class
+com\syntra\auth\service\AuthService.class
