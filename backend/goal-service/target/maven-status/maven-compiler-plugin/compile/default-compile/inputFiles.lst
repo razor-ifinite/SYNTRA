@@ -1,0 +1,13 @@
+C:\Users\USER\Desktop\syntra\backend\goal-service\src\main\java\com\syntra\goal\controller\GoalController.java
+C:\Users\USER\Desktop\syntra\backend\goal-service\src\main\java\com\syntra\goal\controller\MilestoneController.java
+C:\Users\USER\Desktop\syntra\backend\goal-service\src\main\java\com\syntra\goal\dto\GoalProgressResponse.java
+C:\Users\USER\Desktop\syntra\backend\goal-service\src\main\java\com\syntra\goal\dto\GoalRequest.java
+C:\Users\USER\Desktop\syntra\backend\goal-service\src\main\java\com\syntra\goal\dto\GoalResponse.java
+C:\Users\USER\Desktop\syntra\backend\goal-service\src\main\java\com\syntra\goal\dto\MilestoneRequest.java
+C:\Users\USER\Desktop\syntra\backend\goal-service\src\main\java\com\syntra\goal\dto\MilestoneResponse.java
+C:\Users\USER\Desktop\syntra\backend\goal-service\src\main\java\com\syntra\goal\GoalServiceApplication.java
+C:\Users\USER\Desktop\syntra\backend\goal-service\src\main\java\com\syntra\goal\model\Goal.java
+C:\Users\USER\Desktop\syntra\backend\goal-service\src\main\java\com\syntra\goal\model\Milestone.java
+C:\Users\USER\Desktop\syntra\backend\goal-service\src\main\java\com\syntra\goal\repository\GoalRepository.java
+C:\Users\USER\Desktop\syntra\backend\goal-service\src\main\java\com\syntra\goal\repository\MilestoneRepository.java
+C:\Users\USER\Desktop\syntra\backend\goal-service\src\main\java\com\syntra\goal\service\GoalService.java
