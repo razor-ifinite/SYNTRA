@@ -1,0 +1,8 @@
+com\syntra\ai\dto\SuggestRequest.class
+com\syntra\ai\config\WebClientConfig.class
+com\syntra\ai\security\SecurityConfig.class
+com\syntra\ai\dto\MotivateRequest.class
+com\syntra\ai\AiServiceApplication.class
+com\syntra\ai\service\AiService.class
+com\syntra\ai\controller\AiController.class
+com\syntra\ai\dto\AiResponse.class
