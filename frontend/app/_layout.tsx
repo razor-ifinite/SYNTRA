@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import { Slot, useRouter, useSegments, ErrorBoundary } from 'expo-router';
+import { Slot, useRouter, useSegments, ErrorBoundary, Stack } from 'expo-router';
 import { useFonts, Inter_400Regular, Inter_700Bold } from '@expo-google-fonts/inter';
 import { DMSans_700Bold } from '@expo-google-fonts/dm-sans';
 import * as SplashScreen from 'expo-splash-screen';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { createAsyncStoragePersister } from '@tanstack/query-async-storage-persister';
-import { persistQueryClient } from '@tanstack/react-query-persist-client';
+import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import * as Notifications from 'expo-notifications';
@@ -23,7 +23,6 @@ const queryClient = new QueryClient({
 });
 
 const persister = createAsyncStoragePersister({ storage: AsyncStorage });
-persistQueryClient({ queryClient, persister, maxAge: 1000 * 60 * 60 * 24 }); // 24hr
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({
@@ -104,11 +103,24 @@ export default function RootLayout() {
     return null;
   }
 
+  if (Platform.OS === 'web') {
+    return (
+      <SafeAreaProvider>
+        <QueryClientProvider client={queryClient}>
+          <Slot />
+        </QueryClientProvider>
+      </SafeAreaProvider>
+    );
+  }
+
   return (
     <SafeAreaProvider>
-      <QueryClientProvider client={queryClient}>
+      <PersistQueryClientProvider
+        client={queryClient}
+        persistOptions={{ persister }}
+      >
         <Slot />
-      </QueryClientProvider>
+      </PersistQueryClientProvider>
     </SafeAreaProvider>
   );
 }
