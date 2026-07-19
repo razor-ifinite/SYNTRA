@@ -1,0 +1,11 @@
+C:\Users\USER\Desktop\syntra\backend\auth-service\src\main\java\com\syntra\auth\AuthServiceApplication.java
+C:\Users\USER\Desktop\syntra\backend\auth-service\src\main\java\com\syntra\auth\controller\AuthController.java
+C:\Users\USER\Desktop\syntra\backend\auth-service\src\main\java\com\syntra\auth\dto\AuthResponse.java
+C:\Users\USER\Desktop\syntra\backend\auth-service\src\main\java\com\syntra\auth\dto\LoginRequest.java
+C:\Users\USER\Desktop\syntra\backend\auth-service\src\main\java\com\syntra\auth\dto\RegisterRequest.java
+C:\Users\USER\Desktop\syntra\backend\auth-service\src\main\java\com\syntra\auth\model\User.java
+C:\Users\USER\Desktop\syntra\backend\auth-service\src\main\java\com\syntra\auth\repository\UserRepository.java
+C:\Users\USER\Desktop\syntra\backend\auth-service\src\main\java\com\syntra\auth\security\JwtAuthenticationFilter.java
+C:\Users\USER\Desktop\syntra\backend\auth-service\src\main\java\com\syntra\auth\security\JwtTokenProvider.java
+C:\Users\USER\Desktop\syntra\backend\auth-service\src\main\java\com\syntra\auth\security\SecurityConfig.java
+C:\Users\USER\Desktop\syntra\backend\auth-service\src\main\java\com\syntra\auth\service\AuthService.java
