@@ -1,23 +1,14 @@
 import React from 'react';
-import { View, StyleSheet, Pressable } from 'react-native';
+import { View, StyleSheet, Pressable, Text, Dimensions } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { SYNTRA_THEME } from '../../constants/Theme';
 import { BottomTabBarProps } from '@react-navigation/bottom-tabs';
-import Animated, { useAnimatedStyle, withSpring } from 'react-native-reanimated';
+
+const { width } = Dimensions.get('window');
 
 export const FloatingTabBar = ({ state, descriptors, navigation }: BottomTabBarProps) => {
-  const tabWidth = 74; // Spec: 5 columns x 74px wide
-  const activeIndex = state.index;
-
-  const animatedStyle = useAnimatedStyle(() => {
-    return {
-      transform: [{ translateX: withSpring(activeIndex * tabWidth) }],
-    };
-  });
-
   return (
     <View style={styles.container}>
-      <Animated.View style={[styles.activeIndicator, animatedStyle]} />
       {state.routes.map((route: any, index: number) => {
         const { options } = descriptors[route.key];
         const isFocused = state.index === index;
@@ -35,21 +26,24 @@ export const FloatingTabBar = ({ state, descriptors, navigation }: BottomTabBarP
         };
 
         let iconName: keyof typeof Ionicons.glyphMap = 'home';
-        if (route.name === 'index') iconName = isFocused ? 'home' : 'home-outline';
-        if (route.name === 'decision-ai') iconName = isFocused ? 'git-branch' : 'git-branch-outline';
-        if (route.name === 'future-me') iconName = isFocused ? 'trending-up' : 'trending-up-outline';
-        if (route.name === 'profile') iconName = isFocused ? 'person' : 'person-outline';
+        let labelName = 'Home';
+        
+        if (route.name === 'index') { iconName = isFocused ? 'home' : 'home-outline'; labelName = 'Home'; }
+        if (route.name === 'decision-ai') { iconName = isFocused ? 'git-branch' : 'git-branch-outline'; labelName = 'Syntra AI'; }
+        if (route.name === 'future-me') { iconName = isFocused ? 'trending-up' : 'trending-up-outline'; labelName = 'Future Me'; }
+        if (route.name === 'profile') { iconName = isFocused ? 'person' : 'person-outline'; labelName = 'Profile'; }
 
         // Index 2 is CoreFAB
         if (index === 2) {
           return (
-            <Pressable
-              key={route.key}
-              style={styles.coreFab}
-              onPress={() => navigation.navigate('goals/create')}
-            >
-              <Ionicons name="add" size={32} color={SYNTRA_THEME.colors.white} />
-            </Pressable>
+            <View key={route.key} style={styles.coreFabContainer}>
+              <Pressable
+                style={styles.coreFab}
+                onPress={() => navigation.navigate('goals/create')}
+              >
+                <Ionicons name="add" size={24} color={SYNTRA_THEME.colors.white} />
+              </Pressable>
+            </View>
           );
         }
 
@@ -62,8 +56,14 @@ export const FloatingTabBar = ({ state, descriptors, navigation }: BottomTabBarP
             <Ionicons
               name={iconName}
               size={24}
-              color={isFocused ? SYNTRA_THEME.colors.white : SYNTRA_THEME.colors.textMuted}
+              color={isFocused ? SYNTRA_THEME.colors.primary : SYNTRA_THEME.colors.textMuted}
             />
+            <Text style={[
+              styles.label, 
+              { color: isFocused ? SYNTRA_THEME.colors.primary : SYNTRA_THEME.colors.textMuted }
+            ]}>
+              {labelName}
+            </Text>
           </Pressable>
         );
       })}
@@ -74,17 +74,19 @@ export const FloatingTabBar = ({ state, descriptors, navigation }: BottomTabBarP
 const styles = StyleSheet.create({
   container: {
     position: 'absolute',
-    bottom: 24,
-    alignSelf: 'center',
-    width: 370, // 5 * 74
-    height: 64,
-    backgroundColor: SYNTRA_THEME.colors.white,
-    borderRadius: 32,
+    bottom: 0,
+    width: width,
+    height: 80,
+    backgroundColor: SYNTRA_THEME.colors.background,
+    borderTopWidth: 1,
+    borderTopColor: SYNTRA_THEME.colors.backgroundAlt,
     flexDirection: 'row',
     alignItems: 'center',
-    shadowColor: SYNTRA_THEME.colors.black,
-    shadowOffset: { width: 0, height: 10 },
-    shadowOpacity: 0.25,
+    justifyContent: 'space-evenly',
+    paddingBottom: 20, // SafeArea allowance for bottom
+    shadowColor: SYNTRA_THEME.colors.textPrimary,
+    shadowOffset: { width: 0, height: -4 },
+    shadowOpacity: 0.05,
     shadowRadius: 10,
     elevation: 10,
   },
@@ -93,31 +95,30 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     height: '100%',
-    zIndex: 1,
   },
-  activeIndicator: {
-    position: 'absolute',
+  label: {
+    fontFamily: 'Inter_400Regular',
+    fontSize: 12,
+    marginTop: 2,
+  },
+  coreFabContainer: {
     width: 74,
-    height: '100%',
-    backgroundColor: SYNTRA_THEME.colors.primary,
-    borderRadius: 32,
-    zIndex: 0,
+    height: 72,
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    transform: [{ translateY: -20 }], // elevated above bar
   },
   coreFab: {
-    width: 72,
-    height: 72,
-    borderRadius: 36,
+    width: 52,
+    height: 52,
+    borderRadius: 26,
     backgroundColor: SYNTRA_THEME.colors.primary,
     alignItems: 'center',
     justifyContent: 'center',
-    transform: [{ translateY: -20 }], // elevated 20px above bar
-    shadowColor: SYNTRA_THEME.colors.black,
+    shadowColor: SYNTRA_THEME.colors.primary,
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.3,
-    shadowRadius: 4,
+    shadowRadius: 8,
     elevation: 8,
-    zIndex: 2,
-    marginLeft: 1, // centering tweak
-    marginRight: 1,
   },
 });

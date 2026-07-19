@@ -1,5 +1,5 @@
 import axios from 'axios';
-import * as SecureStore from 'expo-secure-store';
+import { Storage as SecureStore } from '../utils/storage';
 
 export const api = axios.create({
   baseURL: process.env.EXPO_PUBLIC_API_GATEWAY || 'http://10.0.2.2:8080',

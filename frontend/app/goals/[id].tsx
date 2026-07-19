@@ -23,7 +23,7 @@ export default function GoalDetailScreen() {
       <View style={styles.container}>
         <View style={styles.header}>
           <Pressable onPress={() => router.back()} style={styles.backButton}>
-            <Ionicons name="arrow-back" size={24} color={SYNTRA_THEME.colors.white} />
+            <Ionicons name="arrow-back" size={24} color={SYNTRA_THEME.colors.textPrimary} />
           </Pressable>
         </View>
         <View style={styles.content}>
@@ -41,10 +41,10 @@ export default function GoalDetailScreen() {
     <View style={styles.container}>
       <View style={styles.header}>
         <Pressable onPress={() => router.back()} style={styles.backButton}>
-          <Ionicons name="arrow-back" size={24} color={SYNTRA_THEME.colors.white} />
+          <Ionicons name="arrow-back" size={24} color={SYNTRA_THEME.colors.textPrimary} />
         </Pressable>
         <Pressable onPress={() => router.push(`/goals/${goal.id}/notifications`)}>
-          <Ionicons name="notifications-outline" size={24} color={SYNTRA_THEME.colors.white} />
+          <Ionicons name="notifications-outline" size={24} color={SYNTRA_THEME.colors.textPrimary} />
         </Pressable>
       </View>
 
@@ -88,7 +88,6 @@ export default function GoalDetailScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: SYNTRA_THEME.colors.background,
   },
   header: {
     flexDirection: 'row',
@@ -167,7 +166,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontFamily: 'Inter_700Bold',
     fontSize: 20,
-    color: SYNTRA_THEME.colors.white,
+    color: SYNTRA_THEME.colors.textPrimary,
     marginBottom: 24,
   },
   timelineContainer: {
@@ -180,7 +179,7 @@ const styles = StyleSheet.create({
     top: 12,
     bottom: 0,
     width: 2,
-    backgroundColor: SYNTRA_THEME.colors.white,
+    backgroundColor: SYNTRA_THEME.colors.textPrimary,
     opacity: 0.3,
   },
   timelineNode: {

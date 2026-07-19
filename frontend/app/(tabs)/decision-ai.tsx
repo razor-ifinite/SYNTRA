@@ -96,7 +96,6 @@ export default function DecisionAIScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: SYNTRA_THEME.colors.background,
   },
   header: {
     paddingHorizontal: 24,
@@ -106,7 +105,7 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontFamily: 'Inter_700Bold',
     fontSize: 28,
-    color: SYNTRA_THEME.colors.white,
+    color: SYNTRA_THEME.colors.textPrimary,
   },
   headerSubtitle: {
     fontFamily: 'Inter_400Regular',

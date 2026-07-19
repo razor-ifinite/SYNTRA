@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import * as SecureStore from 'expo-secure-store';
+import { Storage as SecureStore } from '../utils/storage';
 import { router } from 'expo-router';
 import { UserProfile, LoginRequest, RegisterRequest, AuthResponse } from '../types';
 import { api } from '../services/api';
@@ -32,15 +32,39 @@ export const useAuth = () => {
   };
 
   const login = async (data: LoginRequest) => {
-    const res = await api.post<AuthResponse>('/api/auth/login', data);
-    await setSession(res.data);
-    router.replace('/(tabs)');
+    setIsLoading(true);
+    try {
+      // Mock network request
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      const mockResponse: AuthResponse = {
+        token: 'mock_jwt_token_123',
+        userId: 'user_1',
+        name: 'Test User',
+        email: data.email,
+      };
+      await setSession(mockResponse);
+      router.replace('/(tabs)');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const register = async (data: RegisterRequest) => {
-    const res = await api.post<AuthResponse>('/api/auth/register', data);
-    await setSession(res.data);
-    router.replace('/(tabs)');
+    setIsLoading(true);
+    try {
+      // Mock network request
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      const mockResponse: AuthResponse = {
+        token: 'mock_jwt_token_456',
+        userId: 'user_2',
+        name: data.name,
+        email: data.email,
+      };
+      await setSession(mockResponse);
+      router.replace('/(tabs)');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const logout = async () => {

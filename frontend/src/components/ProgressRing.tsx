@@ -39,9 +39,7 @@ export const ProgressRing: React.FC<ProgressRingProps> = ({
           r={normalizedRadius}
           cx={radius}
           cy={radius}
-          rotation="-90"
-          originX={radius}
-          originY={radius}
+          transform={`rotate(-90 ${radius} ${radius})`}
         />
       </Svg>
       <View style={[StyleSheet.absoluteFill, styles.textContainer]}>

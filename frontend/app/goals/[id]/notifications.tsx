@@ -51,7 +51,7 @@ export default function NotificationSetupScreen() {
       <View style={styles.container}>
         <View style={styles.header}>
           <Pressable onPress={() => router.back()} style={styles.backButton}>
-            <Ionicons name="arrow-back" size={24} color={SYNTRA_THEME.colors.white} />
+            <Ionicons name="arrow-back" size={24} color={SYNTRA_THEME.colors.textPrimary} />
           </Pressable>
         </View>
         <View style={styles.content}>
@@ -65,7 +65,7 @@ export default function NotificationSetupScreen() {
     <View style={styles.container}>
       <View style={styles.header}>
         <Pressable onPress={() => router.back()} style={styles.backButton}>
-          <Ionicons name="arrow-back" size={24} color={SYNTRA_THEME.colors.white} />
+          <Ionicons name="arrow-back" size={24} color={SYNTRA_THEME.colors.textPrimary} />
         </Pressable>
         <Text style={styles.headerTitle}>Notifications</Text>
         <View style={{ width: 24 }} />
@@ -135,7 +135,6 @@ export default function NotificationSetupScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: SYNTRA_THEME.colors.background,
   },
   header: {
     flexDirection: 'row',
@@ -152,7 +151,7 @@ const styles = StyleSheet.create({
   headerTitle: {
     fontFamily: 'Inter_700Bold',
     fontSize: 20,
-    color: SYNTRA_THEME.colors.white,
+    color: SYNTRA_THEME.colors.textPrimary,
   },
   content: {
     padding: 24,

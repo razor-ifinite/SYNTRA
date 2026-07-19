@@ -74,7 +74,6 @@ export default function ProfileScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: SYNTRA_THEME.colors.background,
   },
   content: {
     padding: 24,
@@ -102,7 +101,7 @@ const styles = StyleSheet.create({
   name: {
     fontFamily: 'Inter_700Bold',
     fontSize: 24,
-    color: SYNTRA_THEME.colors.white,
+    color: SYNTRA_THEME.colors.textPrimary,
     marginBottom: 4,
   },
   email: {
@@ -127,7 +126,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontFamily: 'Inter_700Bold',
     fontSize: 20,
-    color: SYNTRA_THEME.colors.white,
+    color: SYNTRA_THEME.colors.textPrimary,
     alignSelf: 'flex-start',
   },
   logCard: {
@@ -178,6 +177,6 @@ const styles = StyleSheet.create({
   emptyText: {
     fontFamily: 'Inter_400Regular',
     fontSize: 16,
-    color: SYNTRA_THEME.colors.white,
+    color: SYNTRA_THEME.colors.textPrimary,
   },
 });

@@ -9,7 +9,7 @@ export default function TabLayout() {
       tabBar={(props) => <FloatingTabBar {...(props as any)} />}
       screenOptions={{
         headerShown: false,
-        sceneStyle: { backgroundColor: SYNTRA_THEME.colors.background },
+        sceneStyle: { backgroundColor: 'transparent' },
       }}
     >
       <Tabs.Screen name="index" />

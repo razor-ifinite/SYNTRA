@@ -1,6 +1,5 @@
 import React from 'react';
-import { Text } from 'react-native';
-import { SYNTRA_THEME } from '../../constants/Theme';
+import { Image, StyleSheet, View } from 'react-native';
 
 interface SyntraLogoProps {
   onDark?: boolean;
@@ -8,15 +7,24 @@ interface SyntraLogoProps {
 
 export const SyntraLogo: React.FC<SyntraLogoProps> = ({ onDark = true }) => {
   return (
-    <Text
-      style={{
-        fontFamily: 'DMSans_700Bold',
-        fontSize: 36,
-        letterSpacing: 4,
-        color: onDark ? SYNTRA_THEME.colors.primary : SYNTRA_THEME.colors.white,
-      }}
-    >
-      SYNTRA.
-    </Text>
+    <View style={styles.container}>
+      <Image 
+        source={require('../../assets/images/Group132_SYNTRA_Purple.png')} 
+        style={styles.logo}
+        resizeMode="contain"
+      />
+    </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    height: 48,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  logo: {
+    width: 200,
+    height: 48,
+  }
+});

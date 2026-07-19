@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, FlatList, RefreshControl } from 'react-native';
+import { View, Text, StyleSheet, FlatList, RefreshControl, Pressable } from 'react-native';
 import { useAuth } from '../../src/hooks/useAuth';
 import { useGoals } from '../../src/hooks/useGoals';
 import { GoalCard } from '../../src/components/GoalCard';
@@ -30,11 +30,11 @@ export default function DashboardScreen() {
     <View style={styles.header}>
       <View style={styles.headerTop}>
         <Text style={styles.greeting}>Hello, {user?.name?.split(' ')[0] || 'User'}</Text>
-        <View style={styles.avatar}>
+        <Pressable style={styles.avatar} onPress={() => router.push('/profile')}>
           <Text style={styles.avatarText}>
             {user?.name ? user.name.substring(0, 2).toUpperCase() : 'ME'}
           </Text>
-        </View>
+        </Pressable>
       </View>
 
       <View style={styles.bentoGrid}>
@@ -104,7 +104,6 @@ export default function DashboardScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: SYNTRA_THEME.colors.background,
   },
   listContent: {
     padding: 24,
@@ -123,7 +122,7 @@ const styles = StyleSheet.create({
   greeting: {
     fontFamily: 'Inter_700Bold',
     fontSize: 28,
-    color: SYNTRA_THEME.colors.white,
+    color: SYNTRA_THEME.colors.textPrimary,
   },
   avatar: {
     width: 48,
@@ -179,7 +178,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontFamily: 'Inter_700Bold',
     fontSize: 20,
-    color: SYNTRA_THEME.colors.white,
+    color: SYNTRA_THEME.colors.textPrimary,
     marginBottom: 16,
   },
   emptyContainer: {
@@ -189,6 +188,6 @@ const styles = StyleSheet.create({
   emptyText: {
     fontFamily: 'Inter_400Regular',
     fontSize: 16,
-    color: SYNTRA_THEME.colors.white,
+    color: SYNTRA_THEME.colors.textPrimary,
   },
 });

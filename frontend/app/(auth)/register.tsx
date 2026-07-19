@@ -1,13 +1,14 @@
 import React from 'react';
-import { View, Text, TextInput, StyleSheet, Pressable, KeyboardAvoidingView, Platform } from 'react-native';
+import { View, Text, TextInput, StyleSheet, Pressable, KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { Link } from 'expo-router';
 import { SyntraLogo } from '../../src/components/SyntraLogo';
+import { AppBackground } from '../../src/components/AppBackground';
 import { useAuth } from '../../src/hooks/useAuth';
 import { SYNTRA_THEME } from '../../constants/Theme';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-controller';
+
 
 const registerSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
@@ -32,11 +33,14 @@ export default function RegisterScreen() {
   };
 
   return (
-    <KeyboardAwareScrollView contentContainerStyle={styles.container}>
+    <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : undefined} style={{ flex: 1 }}>
+      <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.topSection}>
+        <AppBackground backgroundColor={SYNTRA_THEME.colors.primary} dotColor={SYNTRA_THEME.colors.white} opacity={0.15} />
         <SyntraLogo onDark={false} />
       </View>
       <View style={styles.bottomSection}>
+        <AppBackground />
         <Text style={styles.headerText}>Register</Text>
 
         <Controller
@@ -100,7 +104,8 @@ export default function RegisterScreen() {
           </Pressable>
         </Link>
       </View>
-    </KeyboardAwareScrollView>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 }
 
@@ -110,28 +115,28 @@ const styles = StyleSheet.create({
     backgroundColor: SYNTRA_THEME.colors.backgroundAlt,
   },
   topSection: {
-    height: '30%',
+    height: '25%',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: SYNTRA_THEME.colors.backgroundAlt,
+    backgroundColor: SYNTRA_THEME.colors.primary,
   },
   bottomSection: {
     height: '70%',
-    backgroundColor: SYNTRA_THEME.colors.black,
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     padding: 24,
     paddingTop: 40,
+    overflow: 'hidden',
   },
   headerText: {
     fontFamily: 'Inter_700Bold',
     fontSize: 24,
-    color: SYNTRA_THEME.colors.white,
+    color: SYNTRA_THEME.colors.textPrimary,
     marginBottom: 32,
   },
   input: {
     fontFamily: 'Inter_400Regular',
-    color: SYNTRA_THEME.colors.white,
+    color: SYNTRA_THEME.colors.textPrimary,
     borderBottomWidth: 1,
     borderBottomColor: SYNTRA_THEME.colors.border,
     paddingVertical: 12,

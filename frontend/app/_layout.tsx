@@ -10,8 +10,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import * as Notifications from 'expo-notifications';
 import * as Device from 'expo-device';
-import { Platform } from 'react-native';
-import * as SecureStore from 'expo-secure-store';
+import { Platform, View } from 'react-native';
+import { Storage as SecureStore } from '../src/utils/storage';
+import { AppBackground } from '../src/components/AppBackground';
 
 // Prevent auto hide
 SplashScreen.preventAutoHideAsync();
@@ -91,8 +92,6 @@ export default function RootLayout() {
               lightColor: '#7C3AED',
             });
           }
-          // const token = (await Notifications.getExpoPushTokenAsync()).data;
-          // You would typically send this token to your backend here.
         }
       }
     };
@@ -107,7 +106,12 @@ export default function RootLayout() {
     return (
       <SafeAreaProvider>
         <QueryClientProvider client={queryClient}>
-          <Slot />
+          <View style={{ flex: 1 }}>
+            <AppBackground />
+            <View style={{ flex: 1 }}>
+              <Slot />
+            </View>
+          </View>
         </QueryClientProvider>
       </SafeAreaProvider>
     );
@@ -119,7 +123,12 @@ export default function RootLayout() {
         client={queryClient}
         persistOptions={{ persister }}
       >
-        <Slot />
+        <View style={{ flex: 1 }}>
+          <AppBackground />
+          <View style={{ flex: 1 }}>
+            <Slot />
+          </View>
+        </View>
       </PersistQueryClientProvider>
     </SafeAreaProvider>
   );
