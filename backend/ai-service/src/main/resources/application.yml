@@ -1,0 +1,11 @@
+server:
+  port: 8084
+
+spring:
+  application:
+    name: ai-service
+
+ai:
+  gemini:
+    api-key: ${GEMINI_API_KEY:your-api-key-here}
+    api-url: https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent
