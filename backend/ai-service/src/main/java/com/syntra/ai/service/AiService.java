@@ -79,15 +79,15 @@ public class AiService {
             if (response != null && response.containsKey("candidates")) {
                 List candidates = (List) response.get("candidates");
                 if (!candidates.isEmpty()) {
-                    Map candidate = (Map) candidates.get(0);
-                    Map content = (Map) candidate.get("content");
-                    List parts = (List) content.get("parts");
-                    Map part = (Map) parts.get(0);
-                    String text = (String) part.get("text");
-                    return new AiResponse(text, "gemini-2.5-flash-lite", true);
-                }
-            }
-            return new AiResponse(text, "gemini-2.5-flash-lite", true);
+    Map candidate = (Map) candidates.get(0);
+    Map content = (Map) candidate.get("content");
+    List parts = (List) content.get("parts");
+    Map part = (Map) parts.get(0);
+    String text = (String) part.get("text");
+    return new AiResponse(text, "gemini-2.5-flash-lite", true);
+}
+}
+return new AiResponse("Could not generate a response.", "gemini-2.5-flash-lite", false);
         } catch (Exception e) {
             return new AiResponse("AI service temporarily unavailable: " + e.getMessage(), "gemini-2.5-flash-lite", false);
         }
