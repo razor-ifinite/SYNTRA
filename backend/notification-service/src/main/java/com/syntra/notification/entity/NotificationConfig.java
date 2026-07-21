@@ -8,7 +8,7 @@ import java.time.OffsetDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name = "notification_config")
+@Table(name = "notification_configs")
 public class NotificationConfig {
 
     @Id
