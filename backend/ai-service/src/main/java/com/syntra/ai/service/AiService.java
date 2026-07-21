@@ -87,9 +87,9 @@ public class AiService {
                     return new AiResponse(text, "gemini-1.5-flash", true);
                 }
             }
-            return new AiResponse("Could not generate a response.", "gemini-1.5-flash", false);
+            return new AiResponse(text, "gemini-2.5-flash-lite", true);
         } catch (Exception e) {
-            return new AiResponse("AI service temporarily unavailable: " + e.getMessage(), "gemini-1.5-flash", false);
+            return new AiResponse("AI service temporarily unavailable: " + e.getMessage(), "gemini-2.5-flash-lite", false);
         }
     }
 }
