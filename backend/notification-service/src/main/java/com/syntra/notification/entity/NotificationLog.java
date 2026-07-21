@@ -6,7 +6,7 @@ import java.time.OffsetDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name = "notification_log")
+@Table(name = "notification_logs")
 public class NotificationLog {
 
     @Id
