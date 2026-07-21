@@ -68,12 +68,13 @@ public class AiService {
             );
 
             Map response = webClient.post()
-                .uri(apiUrl + "?key=" + apiKey)
-                .header("Content-Type", "application/json")
-                .bodyValue(requestBody)
-                .retrieve()
-                .bodyToMono(Map.class)
-                .block();
+    .uri(apiUrl)
+    .header("Content-Type", "application/json")
+    .header("X-goog-api-key", apiKey)
+    .bodyValue(requestBody)
+    .retrieve()
+    .bodyToMono(Map.class)
+    .block();
 
             // Parse Gemini response structure
             if (response != null && response.containsKey("candidates")) {
@@ -84,12 +85,12 @@ public class AiService {
     List parts = (List) content.get("parts");
     Map part = (Map) parts.get(0);
     String text = (String) part.get("text");
-    return new AiResponse(text, "gemini-2.5-flash-lite", true);
+    return new AiResponse(text, "gemini-flash-latest", true);
 }
 }
-return new AiResponse("Could not generate a response.", "gemini-2.5-flash-lite", false);
+return new AiResponse("Could not generate a response.", "gemini-flash-latest", false);
         } catch (Exception e) {
-            return new AiResponse("AI service temporarily unavailable: " + e.getMessage(), "gemini-2.5-flash-lite", false);
+            return new AiResponse("AI service temporarily unavailable: " + e.getMessage(), "gemini-flash-latest", false);
         }
     }
 }
