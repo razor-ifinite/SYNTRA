@@ -84,7 +84,7 @@ public class AiService {
                     List parts = (List) content.get("parts");
                     Map part = (Map) parts.get(0);
                     String text = (String) part.get("text");
-                    return new AiResponse(text, "gemini-1.5-flash", true);
+                    return new AiResponse(text, "gemini-2.5-flash-lite", true);
                 }
             }
             return new AiResponse(text, "gemini-2.5-flash-lite", true);
