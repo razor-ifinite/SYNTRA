@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import GoalsScreen from './screens/GoalsScreen'
+import AuthScreen from './screens/AuthScreen'
 import AIScreen from './screens/AIScreen'
 import RemindersScreen from './screens/RemindersScreen'
 import ProfileScreen from './screens/ProfileScreen'
