@@ -6,6 +6,7 @@ import com.syntra.ai.dto.SuggestRequest;
 import com.syntra.ai.service.AiService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/ai")
@@ -25,5 +26,11 @@ public class AiController {
     @PostMapping("/motivate")
     public ResponseEntity<AiResponse> motivate(@RequestBody MotivateRequest request) {
         return ResponseEntity.ok(aiService.motivate(request));
+    }
+
+    @DeleteMapping("/user/{userId}")
+    public ResponseEntity<Void> deleteAllAiHistoryByUser(@PathVariable UUID userId) {
+        // AI service is currently stateless (no db), so nothing to delete
+        return ResponseEntity.noContent().build();
     }
 }
