@@ -5,6 +5,7 @@ import com.syntra.notification.dto.NotificationResponse;
 import com.syntra.notification.model.Notification;
 import com.syntra.notification.repository.NotificationRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.UUID;
@@ -68,5 +69,10 @@ public class NotificationService {
                 notification.isRead(),
                 notification.getCreatedAt() != null ? notification.getCreatedAt().toString() : null
         );
+    }
+
+    @Transactional
+    public void deleteAllNotificationsByUser(UUID userId) {
+        notificationRepository.deleteAllByUserId(userId);
     }
 }

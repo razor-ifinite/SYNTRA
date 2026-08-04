@@ -89,4 +89,23 @@ public class AuthService {
                 user.getEmail()
         );
     }
+
+    @Transactional
+    public void deleteUser(String token) {
+        if (token == null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid authorization header format");
+        }
+        
+        String jwt = token.startsWith("Bearer ") ? token.substring(7) : token;
+        
+        if (!tokenProvider.validateToken(jwt)) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Token is expired or invalid");
+        }
+
+        String email = tokenProvider.getEmailFromToken(jwt);
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.UNAUTHORIZED, "User not found"));
+                
+        userRepository.delete(user);
+    }
 }

@@ -46,4 +46,10 @@ public class GoalController {
     public ResponseEntity<GoalProgressResponse> getGoalProgress(@PathVariable UUID goalId) {
         return ResponseEntity.ok(goalService.getGoalProgress(goalId));
     }
+
+    @DeleteMapping("/user/{userId}")
+    public ResponseEntity<Void> deleteAllGoalsByUser(@PathVariable UUID userId) {
+        goalService.deleteAllGoalsByUser(userId);
+        return ResponseEntity.noContent().build();
+    }
 }

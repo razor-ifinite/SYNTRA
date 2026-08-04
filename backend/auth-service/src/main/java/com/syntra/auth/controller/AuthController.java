@@ -36,4 +36,10 @@ public class AuthController {
         AuthResponse response = authService.validateTokenAndGetUser(authHeader);
         return ResponseEntity.ok(response);
     }
+
+    @DeleteMapping("/user")
+    public ResponseEntity<Void> deleteAccount(@RequestHeader("Authorization") String authHeader) {
+        authService.deleteUser(authHeader);
+        return ResponseEntity.noContent().build();
+    }
 }

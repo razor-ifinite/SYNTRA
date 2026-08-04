@@ -65,6 +65,15 @@ public class GoalService {
     }
 
     @Transactional
+    public void deleteAllGoalsByUser(UUID userId) {
+        List<Goal> goals = goalRepository.findByUserId(userId);
+        for (Goal goal : goals) {
+            milestoneRepository.deleteAllByGoalId(goal.getId());
+        }
+        goalRepository.deleteAllByUserId(userId);
+    }
+
+    @Transactional
     public MilestoneResponse createMilestone(MilestoneRequest request) {
         Goal goal = goalRepository.findById(request.goalId())
                 .orElseThrow(() -> new RuntimeException("Goal not found"));

@@ -10,4 +10,5 @@ import java.util.UUID;
 @Repository
 public interface MilestoneRepository extends JpaRepository<Milestone, UUID> {
     List<Milestone> findByGoalId(UUID goalId);
+    void deleteAllByGoalId(UUID goalId);
 }
