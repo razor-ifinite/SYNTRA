@@ -11,6 +11,7 @@ import GoalsScreen from './src/screens/GoalsScreen'
 import AIScreen from './src/screens/AIScreen'
 import RemindersScreen from './src/screens/RemindersScreen'
 import ProfileScreen from './src/screens/ProfileScreen'
+import { usePushNotifications } from './src/hooks/usePushNotifications'
 import Svg, { Circle, Path } from 'react-native-svg'
 import { Feather } from '@expo/vector-icons'
 
@@ -26,6 +27,8 @@ function MainApp() {
   
   const systemColorScheme = useColorScheme()
   const [dark, setDark] = useState(systemColorScheme === 'dark')
+
+  const { expoPushToken } = usePushNotifications(user, token)
 
   const [hapticsEnabled, setHapticsEnabled] = useState(true)
 
