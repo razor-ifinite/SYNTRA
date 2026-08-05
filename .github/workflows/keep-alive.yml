@@ -1,0 +1,28 @@
+name: Keep Backend Services Awake
+
+on:
+  schedule:
+    # Runs every 14 minutes.
+    # Note: GitHub Actions may sometimes delay cron execution during high load, 
+    # but it will generally run reliably enough to prevent PaaS sleeping.
+    - cron: '*/14 * * * *'
+  
+  # Allows you to trigger this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  ping-services:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Ping AI Service
+        run: curl -s -o /dev/null -w "%{http_code}" "https://syntra-ai-0km8.onrender.com/" || true
+
+      - name: Ping Auth Service
+        run: curl -s -o /dev/null -w "%{http_code}" "https://syntra-auth.onrender.com/" || true
+
+      - name: Ping Goal Service
+        run: curl -s -o /dev/null -w "%{http_code}" "https://syntra-goal.onrender.com/" || true
+
+      - name: Ping Notification Service
+        run: curl -s -o /dev/null -w "%{http_code}" "https://syntra-notification.onrender.com/" || true
