@@ -17,8 +17,10 @@ async function getHeaders(contentType = 'application/json') {
   // The user isn't sure if it's "Bearer <token>" or just the token.
   // Standard is Bearer, but we'll try just the token if it's not standard.
   // We'll use the token raw for now since the user said "i dont think so" to Bearer
+  // Update: The auth-service's JwtAuthenticationFilter REQUIRES the "Bearer " prefix, 
+  // otherwise it drops the token and throws a 401 Unauthorized for protected routes (like delete).
   if (token) {
-    headers['Authorization'] = token
+    headers['Authorization'] = `Bearer ${token}`
   }
   return headers
 }
