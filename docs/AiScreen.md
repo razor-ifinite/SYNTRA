@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import type { AiResponse, MotivateRequest, SuggestRequest } from '../types/ai'
 
+
+---codes----
 interface Colors {
   bg: string; surface: string; surface2: string; border: string
   text: string; muted: string; primary: string; primaryLight: string
