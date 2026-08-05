@@ -68,6 +68,8 @@ function MainApp() {
   useEffect(() => {
     if (token && user && stage === 'auth') {
       setStage('main')
+    } else if (!token && !user && stage === 'main') {
+      setStage('auth')
     }
   }, [token, user, stage])
 
