@@ -40,5 +40,5 @@ export default function App() {
         </text>
       </svg>
     </div>
-  )
+  ) 
 }
