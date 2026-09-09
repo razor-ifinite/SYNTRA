@@ -1,4 +1,4 @@
-name: Keep Backend Services Awake
+"name: Keep Backend Services Awake
 
 on:
   schedule:
@@ -26,3 +26,4 @@ jobs:
 
       - name: Ping Notification Service
         run: curl -s -o /dev/null -w "%{http_code}" "https://syntra-notification.onrender.com/" || true
+"
